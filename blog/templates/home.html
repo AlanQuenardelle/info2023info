@@ -1,0 +1,603 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo%} home {%endblock titulo%}
+
+{% block contenido%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS Files -->
+  <link href="{% static '/assets/css/variables.css' %}" rel="stylesheet">
+  <link href="{% static '/assets/css/main.css'   %}" rel="stylesheet">
+
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="#" class="logo d-flex align-items-center">
+       <img src="{% static 'img/diamond.png'%}" alt=""> 
+        <h1>HARD PIXEL</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="#">Inicio</a></li>
+          
+          <li><a href="noticia">Noticias</a></li>
+          <li class="dropdown"><a href="/noticia"><span>Categorias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="noticia">Mostrar Todo</a></li>
+              <li>
+                <ul>
+                  
+                  
+                </ul>
+              </li>
+              
+              
+              
+            </ul>
+          </li>
+
+          <li><a href="nosotros">Sobre Nosotros</a></li>
+          <li><a href="noticia/contacto">Contactanos</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <p style="color:#d81ce9;margin-top: 18px;margin-left: 25px;" 
+        >  Bienvenido {{ user.username }}</p> 
+        <a href="{% url 'logout' %}"> Cerrar sesion</a>
+        {% else %}
+        <a href="{% url 'login' %}">Iniciar sesion</a>
+        <a href="{% url 'usuarios:registro' %}">Registrarse</a>
+
+        {% endif %}
+      </nav><!-- .navbar -->
+
+      <div class="position-relative">
+        <a href="#" class="mx-2"><span class="bi-facebook" style="color:#d81ce9"></span></a>
+        <a href="#" class="mx-2"><span class="bi-twitter"style="color:#d81ce9"></span></a>
+        <a href="#" class="mx-2"><span class="bi-instagram"style="color:#d81ce9"></span></a>
+
+        <a href="#" class="mx-2 js-search-open"><span class="bi-search"style="color:#d81ce9"></span></a>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+
+        <!-- ======= Search Form ======= -->
+        <div class="search-form-wrap js-search-form-wrap">
+          <form action="search-result.html" class="search-form">
+            <span class="icon bi-search"></span>
+            <input type="text" placeholder="Search" class="form-control">
+            <button class="btn js-search-close"><span class="bi-x"></span></button>
+          </form>
+        </div><!-- End Search Form -->
+
+      </div>
+
+    </div>
+
+  </header><!-- End Header -->
+  <section style="background-color: rgb(0, 0, 0);">
+  <main id="main">
+
+    <!-- ======= Hero Slider Section ======= -->
+    <section id="hero-slider" class="hero-slider">
+      <div class="container-md" data-aos="fade-in">
+        <div class="row">
+          <div class="col-12">
+            <div class="swiper sliderFeaturedPosts">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <a href="noticia" class="img-bg d-flex align-items-end" style="background-image: url('{% static 'img/fotosnoticiasindie.png' %}');">
+                    <div class="img-bg-inner">
+                      <h2 style="color: #d81ce9;">Los mejores juegos indies de este 2023</h2>
+                      <p>En Hard Pixel nos encargamos de buscar los mejores juegos indies de este 2023 para que los disfrutes al maximo!</p>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide">
+                  <a href="noticia" class="img-bg d-flex align-items-end" style="background-image: url('{% static 'img/indiesprome.png' %}');">
+                    <div class="img-bg-inner">
+                      <h2 style="color: #d81ce9;">Proximos juegos</h2>
+                      <p>Estos son los juegos que te van a dejar muy manija esperando a que salgan</p>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide">
+                  <a href="noticia" class="img-bg d-flex align-items-end" style="background-image: url('{% static 'img/gamer.jpg' %}');">
+                    <div class="img-bg-inner">
+                      <h2 style="color: #d81ce9;">Mejores tiendas para comprar en Argentina</h2>
+                      <p>Necesitas comprar un mouse o teclado? Incluso una placa de video , te recomendamos estas tiendas!</p>
+                    </div>
+                  </a>
+                </div>
+
+                <div class="swiper-slide">
+                  <a href="noticia" class="img-bg d-flex align-items-end" style="background-image: url('{% static 'img/juegos.jpg' %}');">
+                    <div class="img-bg-inner">
+                      <h2 style="color: #d81ce9;">Las mejores paginas para comprar juegos</h2>
+                      <p>Tenes miedo de descargar por paginas no seguras? Te recomendamos estas top paginas donde podras buscar y comprar tus juegos favoritos</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <div class="custom-swiper-button-next">
+                <span class="bi-chevron-right"></span>
+              </div>
+              <div class="custom-swiper-button-prev">
+                <span class="bi-chevron-left"></span>
+              </div>
+
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Hero Slider Section -->
+
+    <!-- ======= Post Grid Section ======= -->
+    <section id="posts" class="posts">
+      <div class="container" data-aos="fade-up">
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <div class="post-entry-1 lg">
+              <a href="noticia"><img src="assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">JUEGOS INDIES</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2><a href="noticia">Mira cuales son los mejores juegos de este 2023</a></h2>
+              <p class="mb-4 d-block"></p>
+
+              <div class="d-flex align-items-center author">
+                <div class="photo"><img src="{% static 'img/darkest-indie.jpg' %}" style="height: 200%; width: 175%;"  alt="" class="img-fluid"></div>
+                <div class="name">
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-8">
+            <div class="row g-5">
+              <div class="col-lg-4 border-start custom-border">
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/instant.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">INSANT GAMING</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2><a href="noticia">JUEGO GRATIS</a></h2>
+                </div>
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/steampagina2.png' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">STEAM</span> <span class="mx-1">&bullet;</span> <span>Jul 17th '22</span></div>
+                  <h2><a href="noticia">CS:GO 2 PROXIMAMENTE</a></h2>
+                </div>
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/venex.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">VENEX</span> <span class="mx-1">&bullet;</span> <span>Mar 15th '22</span></div>
+                  <h2><a href="noticia">HOT SALE</a></h2>
+                </div>
+              </div>
+              <div class="col-lg-4 border-start custom-border">
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/crab-indie.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">PROXIMOS JUEGOS</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2><a href="noticia">ANOTHER CRAB'S TREASURERAM</a></h2>
+                </div>
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/planetoflana-juego-indie.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">TOP JUEGOS </span> <span class="mx-1">&bullet;</span> <span>Mar 1st '22</span></div>
+                  <h2><a href="noticia">PLANET OF LANA</a></h2>
+                </div>
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/compragamer.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">COMPRA GAMER</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2><a href="noticia">CUPON DE DESCUENTO</a></h2>
+                </div>
+              </div>
+
+              <!-- Trending Section -->
+              <div class="col-lg-4">
+
+                <div class="trending">
+                  <h3>Tendencias</h3>
+                  <ul class="trending-post">
+                    <li>
+                      <a href="noticia">
+                        <span class="number" >1</span>
+                        <h3>Los mejores juegos indies de este 2023</h3>
+                      
+                      </a>
+                    </li>
+                    <li>
+                      <a href="noticia">
+                        <span class="number">2</span>
+                        <h3>Proximos juegos</h3>
+                        
+                      </a>
+                    </li>
+                    <li>
+                      <a href="noticia">
+                        <span class="number">3</span>
+                        <h3>Mejores tiendas para comprar en Argentina</h3>
+                        
+                      </a>
+                    </li>
+                    <li>
+                      <a href="noticia">
+                        <span class="number">4</span>
+                        <h3>Las mejores paginas para comprar juegos</h3>
+                        
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+
+              </div> <!-- End Trending Section -->
+            </div>
+          </div>
+
+        </div> <!-- End .row -->
+      </div>
+    </section> <!-- End Post Grid Section -->
+
+    <!-- ======= Juegos indies Category Section ======= -->
+    <section class="category-section">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header d-flex justify-content-between align-items-center mb-5">
+          <h2 style="color: #d81ce9;">JUEGOS INDIES</h2>
+          <div><a href="category.html" class="more">Ver todos los juegos indies</a></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-9">
+
+            <div class="d-lg-flex post-entry-2">
+              <a href="noticia" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
+                <img src="{% static 'img/do-not-feed-the-monkeys-principal.jpg' %}" style="width: 1500px; height: 250px;" alt="" class="img-fluid">
+              </a>
+              <div>
+                <div class="post-meta"><span class="date">Juegos indies</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                <div class="d-flex align-items-center author">
+                  <div class="name">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="post-entry-1 border-bottom">
+                  <a href="noticia"><img src="{% static 'img/geckogame.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Mira lo que se esta jugando</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">HAZ CLICK PARA VER</a></h2>
+                </div>
+
+                <div class="post-entry-1">
+                  <div class="post-meta"><span class="date">juegos indies</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">DARKEST DUNGEON 2</a></h2>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/passport.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">Juegos indies</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">ESTAS ABURRIDO Y NO SABES QUE JUGAR? PROBA ESTOS JUEGOS</a></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3">
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">Juegos indies</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="noticia">TOP 3 JUEGOS INDIES</a></h2>
+            </div>
+
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">Juegos indies</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="noticia">NOS ENCARGAMOS DE ELEGIR LOS MEJORES JUEGOS</a></h2>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End Juegos indies Category Section -->
+
+    <!-- ======= PROXIMOS JUEGOS Category Section ======= -->
+    <section class="category-section">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header d-flex justify-content-between align-items-center mb-5">
+          <h2 style="color: #d81ce9;">PROXIMOS JUEGOS</h2>
+          <div><a href="category.html" class="more">VER TODOS LOS PROXIMOS JUEGOS</a></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-9 order-md-2">
+
+            <div class="d-lg-flex post-entry-2">
+              <a href="noticia" class="me-4 thumbnail d-inline-block mb-4 mb-lg-0">
+                <img src="{% static 'img/anton-indie.jpg' %}" alt="" class="img-fluid">
+              </a>
+              <div>
+                <div class="post-meta"><span class="date">PROXIMOS JUEGOS</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                <h3><a href="noticia">JUEGOS QUE TE DEJARAN MANIJA</a></h3>
+                <p style="color: #cccaca;" >La industria del videojuego ha evolucionado mucho en los últimos 30 años. Las grandes compañías hacen lanzamientos muy potentes, pero también hay espacio para los juegos indies. Este término se utiliza desde principios de los 2000 debido al nacimiento de plataformas digitales como Steam que son más accesibles para los desarrolladores independientes. Así que lo que en principio podría ser un trabajo amateur, se convirtió en algo más profesional con nuevos métodos de distribución. ¿Cuáles son los mejores juegos indies deL 2023?</p>
+                <div class="d-flex align-items-center author">
+                  <div class="photo"><img src="assets/img/person-4.jpg" alt="" class="img-fluid"></div>
+                  <div class="name">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="post-entry-1 border-bottom">
+                  <a href="noticia"><img src="{% static 'img/havenice.jpg' %}" width="500" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">PROXIMOS JUEGOS</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">VER MAS ACA</a></h2>
+                </div>
+
+                <div class="post-entry-1">
+                  <div class="post-meta"><span class="date">PROXIMOS JUEGOS</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">TOP JUEGOS PROXIMAMENTE</a></h2>
+                </div>
+              </div>
+              <div class="col-lg-8">
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/story.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">PROXIMOS JUEGOS</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">ENTERATE DE TODO</a></h2>
+                  <p class="mb-4 d-block">SOMOS HARD PIXEL Y ESTOS SON LOS JUEGOS QUE SE VIENEN</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">PROXIMOS JUEGOS</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="noticia">ANOTHER CRAB'S TREASURERAM</a></h2>
+            </div>
+
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">PROXIMOS JUEGOS</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="noticia">ANTONBLAST</a></h2>
+            </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- End PROXIMOS JUEGOS Category Section -->
+
+    <!-- ======= MEJORES TIENDAS PARA GAMING EN ARGENTINA Category Section ======= -->
+    <section class="category-section">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header d-flex justify-content-between align-items-center mb-5">
+          <h2 style="color: #d81ce9;">MEJORES TIENDAS PARA GAMING EN ARGENTINA</h2>
+          <div><a href="noticia" class="more">MIRAR TODAS LAS MEJORES TIENDAS PARA GAMING EN ARGENTINA</a></div>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <div class="post-entry-1 lg">
+              <a href="noticia"><img src="assets/img/post-landscape-8.jpg" alt="" class="img-fluid"></a>
+              <div class="post-meta"><span class="date">MEJORES TIENDAS PARA GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2><a href="noticia">QUITATE EL MIEDO DE COMPRAR ONLINE EN ESTAS TIENDAS</a></h2>
+              <p class="mb-4 d-block" style="color: #cccaca;">EN HARD PIXEL RECOMENDAMOS ESTAS TIENDAS POR SUS PRECIOS Y TIEMPO DE ENTREGA</p>
+
+              <div class="d-flex align-items-center author">
+                <div class="photo"><img src="{% static 'img/gamer.jpg' %}" style="height: 200%; width: 175%;" alt="" class="img-fluid"></div>
+                <div class="name">
+                </div>
+              </div>
+            </div>
+
+            <div class="post-entry-1 border-bottom">
+              <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="noticia">APROVECHA QUE HAY DESCUENTOS</a></h2>
+            </div>
+
+            <div class="post-entry-1">
+              <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+              <h2 class="mb-2"><a href="noticia">15% EN NOTEBOOKS </a></h2>
+            </div>
+
+          </div>
+
+          <div class="col-lg-8">
+            <div class="row g-5">
+              <div class="col-lg-4 border-start custom-border">
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/mouse-logi1.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2><a href="noticia">MOUSE INALAMBRICO LOGITECH G PRO X SUPERLIGHT BLACK</a></h2>
+                </div>
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/aorus.png' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 17th '22</span></div>
+                  <h2><a href="single-post.html">DISCO SOLIDO SSD GIGABYTE 256GB M2 NVME AORUS RGB</a></h2>
+                </div>
+                <div class="post-entry-1">
+                  <a href="single-post.html"><img src="{% static 'img/corered.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Mar 15th '22</span></div>
+                  <h2><a href="single-post.html">TECLADO HYPERX ALLOY ORIGINS CORE RED MECANICO</a></h2>
+                </div>
+              </div>
+              <div class="col-lg-4 border-start custom-border">
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/viper.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2><a href="noticia">MEMORIA RAM DDR4 8GB 3600MHZ PATRIOT VIPER STEEL RGB BLACK CL20</a></h2>
+                </div>
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/mousepad.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Mar 1st '22</span></div>
+                  <h2><a href="noticia">MOUSEPAD HYPERX FURY "S" PRO EXTRA LARGE</a></h2>
+                </div>
+                <div class="post-entry-1">
+                  <a href="noticia"><img src="{% static 'img/auri.jpg' %}" alt="" class="img-fluid"></a>
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2><a href="noticia">AURICULAR LOGITECH G PRO GAMING</a></h2>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="post-entry-1 border-bottom">
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">PLACA DE VIDEO ASUS ROG STRIX NVIDIA GEFORCE RTX 4070TI 12GB GAMING GDDR6X</a></h2>
+                </div>
+
+                <div class="post-entry-1 border-bottom">
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">GABINETE GIGABYTE C300 RGB AORUS BLACK</a></h2>
+                </div>
+
+                <div class="post-entry-1 border-bottom">
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">FUENTE AEROCOOL CYLON 500W RGB 80+ BRONZE</a></h2>
+                </div>
+
+                <div class="post-entry-1 border-bottom">
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">MONITOR 24 LG 24GN60R-B IPS FHD 144HZ</a></h2>
+                </div>
+
+                <div class="post-entry-1 border-bottom">
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">MICROPROCESADOR AMD RYZEN 5 7600 RAPHAEL ZEN4 AM5</a></h2>
+                </div>
+
+                <div class="post-entry-1 border-bottom">
+                  <div class="post-meta"><span class="date">MEJORES TIENDAS GAMING EN ARGENTINA</span> <span class="mx-1">&bullet;</span> <span>Jul 5th '22</span></div>
+                  <h2 class="mb-2"><a href="noticia">WATER COOLER DARKFLASH TWISTER DX360 ARGB 360 BLACK</a></h2>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- End .row -->
+      </div>
+    </section><!-- End MEJORES TIENDAS  GAMING EN ARGENTINA Category Section -->
+
+  </main><!-- End #main -->
+</section>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-content">
+      <div class="container">
+
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <h3 class="footer-heading">Sobre nosotros</h3>
+            <p>Somos un grupo dedicados al gaming </p>
+            <p><a href="nosotros" class="footer-link-more">Leer mas</a></p>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h3 class="footer-heading">Navegacion</h3>
+            <ul class="footer-links list-unstyled">
+              <li><a href="noticia"><i class="bi bi-chevron-right"></i> Noticias</a></li>
+              <li><a href="about.html"><i class="bi bi-chevron-right"></i> Sobre nosotros</a></li>
+              <li><a href="contacto"><i class="bi bi-chevron-right"></i> Contactanos</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h3 class="footer-heading">Categorias</h3>
+            <ul class="footer-links list-unstyled">
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Juegos Indies</a></li>
+              <li><a href="category.html"><i class="bi bi-chevron-right"></i> Proximos juegos</a></li>
+
+            </ul>
+          </div>
+
+          
+
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <div class="container">
+
+        <div class="row justify-content-between">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <div class="copyright">
+              © Copyright <strong><span></span></strong>. All Rights Reserved
+            </div>
+
+            <div class="credits">
+              
+              
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{%static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/aos/aos.js' %}"></script>
+  
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock contenido%}

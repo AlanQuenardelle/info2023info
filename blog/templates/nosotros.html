@@ -1,0 +1,289 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo%} nosotros {%endblock titulo%}
+
+{% block contenido%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>ZenBlog Bootstrap Template - About</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Inter:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{%static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS Files -->
+  <link href="{%static 'assets/css/variables.css' %}" rel="stylesheet">
+  <link href="{%static 'assets/css/main.css' %}" rel="stylesheet">
+
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+      <a href="/#" class="logo d-flex align-items-center">
+       <img src="{% static 'img/diamond.png'%}" alt=""> 
+        <h1>HARD PIXEL</h1>
+      </a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="/#">Inicio</a></li>
+          
+          <li><a href="/noticia">Noticias</a></li>
+          <li class="dropdown"><a href="/noticia"><span>Categorias</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="/noticia">Mostrar Todo</a></li>
+              <ul>
+              </ul>
+            </li>
+            {% for c in categorias %}
+               <a href="?id={{c.pk}}" style="color: #c7d4d4;">{{c.nombre}}</a>
+               {% endfor %}
+          </li>
+        </ul>
+      </li>
+
+          <li><a href="/nosotros">Sobre Nosotros</a></li>
+          <li><a href="/noticia/contacto">Contactanos</a></li>
+        </ul>
+        {% if user.is_authenticated %}
+        <p style="color:#d81ce9;margin-top: 18px;margin-left: 25px;" 
+        >  Bienvenido {{ user.username }}</p> 
+        <a href="{% url 'logout' %}"> Cerrar sesion</a>
+        {% else %}
+        <a href="{% url 'login' %}">Iniciar sesion</a>
+        <a href="{% url 'usuarios:registro' %}">Registrarse</a>
+
+        {% endif %}
+      </nav><!-- .navbar -->
+
+      <div class="position-relative">
+        <a href="#" class="mx-2"><span class="bi-facebook" style="color:#d81ce9"></span></a>
+        <a href="#" class="mx-2"><span class="bi-twitter"style="color:#d81ce9"></span></a>
+        <a href="#" class="mx-2"><span class="bi-instagram"style="color:#d81ce9"></span></a>
+
+        <a href="#" class="mx-2 js-search-open"><span class="bi-search"style="color:#d81ce9"></span></a>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+
+        <!-- ======= Search Form ======= -->
+        <div class="search-form-wrap js-search-form-wrap">
+          <form action="search-result.html" class="search-form">
+            <span class="icon bi-search"></span>
+            <input type="text" placeholder="Search" class="form-control">
+            <button class="btn js-search-close"><span class="bi-x"></span></button>
+          </form>
+        </div><!-- End Search Form -->
+
+      </div>
+
+    </div>
+
+  </header><!-- End Header -->
+<section style="background-color: #070607 ;">
+  <main id="main">
+    <section>
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-lg-12 text-center mb-5">
+            <h1 class="page-title" style="color: #d81ce9;">Sobre nosotros</h1>
+          </div>
+        </div>
+
+        <div class="row mb-5">
+
+          <div class="d-md-flex post-entry-2 half">
+            <a href="#" class="me-4 thumbnail">
+              <img src="{% static 'img/diamond.png' %}" alt="" class="img-fluid">
+            </a>
+            <div class="ps-md-5 mt-4 mt-md-0">
+              <div class="post-meta mt-4"style="color: #f3f3f3;">Nosotros</div>
+              <h2 class="mb-4 display-4">Nuestra historia</h2>
+
+              <p style="color: #f3f3f3;">Hard Pixel nació el 1 de julio de 2023. La web nació como proyecto personal y amateur de un grupo de amigos, pero rapidamente ya estaba consolidada como una de las principales fuentes de información de videojuegos de Argentina A lo largo de su historia Hard Pixel ha pasado por diferentes diseños e hitos.</p>
+              <p style="color: #f3f3f3;">Hubieron destacados cambios, que automatizaron por completo la web, el lanzamiento del pionero sistema de noticias , la asociación con diferentes paginas gaming y la asociación con una de las tiendas mas conocidas en Argentina . Actualmente la empresa que edita Hard Pixel está participada mayoritariamente por Alan Quenardelle y Carlos Gomez, fundadores y directores de la web.</p>
+            </div>
+          </div>
+
+          <div class="d-md-flex post-entry-2 half mt-5">
+            <a href="#" class="me-4 thumbnail order-2">
+              <img src="{% static 'img/gaming.png' %}" alt="" class="img-fluid">
+            </a>
+            <div class="pe-md-5 mt-4 mt-md-0">
+              <div class="post-meta mt-4"style="color: #f3f3f3;" >Proyecto</div>
+              <h2 class="mb-4 display-4" >Nuestros Objetivos</h2>
+
+              <p style="color: #f3f3f3;">Nuestro objetivo es ser la principal fuente de información de videojuegos en lengua española. Nuestros valores son la independencia editorial, el rigor informativo, el respeto a las diferencias y la inclusión de todos los públicos en el sector del videojuego. Consideramos que el videojuego es un entretenimiento interactivo que combina arte, cultura y tecnología, y creemos en su potencial para entretener, contar historias, divulgar conocimiento y convertirse en un elemento competitivo a través de los eSports.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  
+    <section class="mb-5 bg-light py-5" style="background-color: #070607 !important;" >
+      <div class="container  " data-aos="fade-up">
+        <div class="row justify-content-between align-items-lg-center">
+          <div class="col-lg-5 mb-4 mb-lg-0" >
+            <h2 class="display-4 mb-4" >Informacion</h2>
+            <p style="color: #f3f3f3;">Aquí encontrarás todas las noticias y las últimas novedades en videojuegos. En Hard Pixel recopilamos cada día y minuto a minuto toda la actualidad del mundo de los videojuegos y sus diferentes plataformas para que siempre estés al corriente de la última actualización o contenido relacionado con tus títulos preferidos, de las fechas de lanzamiento de los juegos más esperados, los anuncios más importantes, reportajes, entrevistas, declaraciones, nuevas imágenes o tráileres y todas las curiosidades del mundillo para mantenerte informado y a la vez entretenido.</p>
+            <p><a href="/noticia" class="more" style="color: #d81ce9;">Click aqui para ver todas las noticias</a></p>
+          </div>
+          <div class="col-lg-6">
+            <div class="row">
+              <div class="col-6">
+                <img src="{% static 'img/tecladogaming.jpg' %}" alt="" class="img-fluid mb-4">
+              </div>
+              <div class="col-6 mt-4">
+                <img src="{% static 'img/mousegaming.png' %}" alt="" class="img-fluid mb-4">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section>
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+          <div class="col-12 text-center mb-5">
+            <div class="row justify-content-center">
+              <div class="col-lg-6">
+                <h2 class="display-4">Nuestro equipo</h2>
+                <p style="color: #f3f3f3;">Éste es nuestro equipo de redactores y colaboradores. ¡Colabora! Siempre estamos buscando nuevos colaboradores dispuestos a poner su granito de arena. Interesados, manden un mail a ejemplo@gmail.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 text-center mb-5">
+            <img src="assets/img/person-1.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4 style="color: #d81ce9;">Alan Quenardelle</h4>
+            <span class="d-block mb-3 text-uppercase" style="color: #0aacb8;">Founder &amp; CEO</span>
+            <p style="color: #f3f3f3;">Siempre compitiendo, primero con el mando y luego al teclado. Apasionado de los videojuegos y a la programacion, Alan disfruta uniendo sus dos pasiones para que cuando necesites saber algo sobre tu juego del momento, encuentres siempre la mejor información.</p>
+          </div>
+          <div class="col-lg-4 text-center mb-5">
+            <img src="assets/img/person-2.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4 style="color: #d81ce9;">Carlos Gomez</h4>
+            <span class="d-block mb-3 text-uppercase" style="color: #0aacb8;">Founder, VP</span>
+            <p style="color: #f3f3f3;">Desde 2023, Carlos se licenció en periodismo con el único fin de poder dedicarse a los videojuegos y escribir sobre ellos, una afición que ha marcado gran parte de su vida y que siempre ha sentido como algo que va mucho más allá de ser un simple hobby.</p>
+          </div>
+          <div class="col-lg-4 text-center mb-5">
+            <img src="assets/img/person-3.jpg" alt="" class="img-fluid rounded-circle w-50 mb-4">
+            <h4 style="color: #d81ce9;">Dedicado a todos los profes que ayudaron</h4>
+            <span class="d-block mb-3 text-uppercase" style="color: #0aacb8;">Editor Staff</span>
+            <p style="color: #f3f3f3;">6 Palabras : CRACKS</p>
+          </div>
+          
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+</section>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+
+    <div class="footer-content">
+      <div class="container">
+
+        <div class="row g-5">
+          <div class="col-lg-4">
+            <h3 class="footer-heading">Sobre nosotros</h3>
+            <p>Somos un grupo dedicados al gaming </p>
+            <p><a href="#" class="footer-link-more">Leer mas</a></p>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h3 class="footer-heading">Navegacion</h3>
+            <ul class="footer-links list-unstyled">
+              <li><a href="/noticia"><i class="bi bi-chevron-right"></i> Noticias</a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Sobre nosotros</a></li>
+              <li><a href="/contacto"><i class="bi bi-chevron-right"></i> Contactanos</a></li>
+            </ul>
+          </div>
+          <div class="col-6 col-lg-2">
+            <h3 class="footer-heading">Categorias</h3>
+            <ul class="footer-links list-unstyled">
+              <li><a href="/noticia"><i class="bi bi-chevron-right"></i> Juegos Indies</a></li>
+              <li><a href="/noticia"><i class="bi bi-chevron-right"></i> Proximos juegos</a></li>
+
+            </ul>
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-legal">
+      <div class="container">
+
+        <div class="row justify-content-between">
+          <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <div class="copyright">
+              © Copyright <strong><span></span></strong>. All Rights Reserved
+            </div>
+
+            <div class="credits">
+              
+              
+            </div>
+
+          </div>
+
+          <div class="col-md-6">
+            <div class="social-links mb-3 mb-lg-0 text-center text-md-end">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  </footer>
+
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{%static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{%static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{%static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{%static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock contenido%}
